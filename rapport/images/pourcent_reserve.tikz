@@ -1,0 +1,66 @@
+% This file was created by matlab2tikz.
+% Minimal pgfplots version: 1.3
+%
+%The latest updates can be retrieved from
+%  http://www.mathworks.com/matlabcentral/fileexchange/22022-matlab2tikz
+%where you can also make suggestions and rate matlab2tikz.
+%
+\definecolor{mycolor1}{rgb}{0.84706,0.16078,0.00000}%
+\definecolor{mycolor2}{rgb}{0.04314,0.51765,0.78039}%
+\definecolor{mycolor3}{rgb}{0.87059,0.49020,0.00000}%
+%
+\begin{tikzpicture}
+
+\begin{axis}[%
+width=\fwidth,
+height=\fheight,
+at={(\fwidth,\fheight)},
+scale only axis,
+area legend,
+separate axis lines,
+every outer x axis line/.append style={black},
+every x tick label/.append style={font=\color{black}},
+xmin=0,
+xmax=5,
+xtick={0,1,2,3,4,5},
+xticklabels={{},{Bio.},{Nucl.},{Gas},{Oil},{}},
+xlabel={Generator type},
+every outer y axis line/.append style={black},
+every y tick label/.append style={font=\color{black}},
+ymin=0,
+ymax=110,
+title={Percent of generator revenue corresponding to the ancillary services [\%]},
+ymajorgrids,
+legend style={at={(0.5,0.97)},anchor=north,legend columns=3,legend cell align=left,align=left,draw=white,fill=white}
+]
+\addplot[ybar,bar width=0.029662\fwidth,bar shift=-0.037077\fwidth,draw=black,fill=mycolor1] plot table[row sep=crcr] {%
+1.00000	0.25971\\
+2.00000	0.00000\\
+3.00000	2.00764\\
+4.00000	100.00000\\
+};
+\addlegendentry{ EDR};
+
+\addplot [color=black,solid,forget plot]
+  table[row sep=crcr]{%
+0.50000	0.00000\\
+4.50000	0.00000\\
+};
+\addplot[ybar,bar width=0.029662\fwidth,draw=black,fill=mycolor2] plot table[row sep=crcr] {%
+1.00000	0.53238\\
+2.00000	0.00000\\
+3.00000	3.42201\\
+4.00000	100.00005\\
+};
+\addlegendentry{ ImpExp};
+
+\addplot[ybar,bar width=0.029662\fwidth,bar shift=0.037077\fwidth,draw=black,fill=mycolor3] plot table[row sep=crcr] {%
+1.00000	5.82569\\
+2.00000	0.00000\\
+3.00000	38.97705\\
+4.00000	90.40499\\
+};
+\addlegendentry{ ORDC};
+
+\end{axis}
+\end{tikzpicture}%

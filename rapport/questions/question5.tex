@@ -1,0 +1,64 @@
+% QUESTION 5
+
+The reserve prices for the different models are available in figure [\ref{fig:EDR_R}], [\ref{fig:ImpExp_R}] et [\ref{fig:ORDC_R1}], and a zoom for the third model  is available on figure [\ref{fig:ORDC_R2}]. Notice that, as expected, the reserve prices are lower than energy prices. It can be interesting to  compare such results with the figure [\ref{fig:ratio}] which is re-displayed on figure [\ref{fig:ratio2}].
+
+\begin{figure}[H]
+    \centering
+    \setlength\fheight{4cm}
+    \setlength\fwidth{0.8\textwidth}
+    \input{images/ratio.tikz}
+    \caption{Ratio between the maximal Belgian production and the real demand level (the demand level minus the power coming from renewable energies)}
+    \label{fig:ratio2}
+\end{figure}
+
+\paragraph{EDR - ImpExp} if we compare the two figures [\ref{fig:ratio2}] and [\ref{fig:EDR_R}], we observe that when the belgian ratio between production and demand level approaches the unit, the reserve price increases. The system is aware of the risk for the system reliability and is willing to pay more in exchange for reserves. For the ImpExp model, the behavior is similar, except that the demand level isn't reduced by the importation. Therefore, the pressure on the system is even stronger. However, it can rely on an external generator, if it's ready to pay the price.
+
+\paragraph{ORDC} The reserve price is generally higher in the third model than in the two previous models. The third model attaches great value to reserves, even when the amount has exceeded the required level of the previous models. Meaning that a lot of reserves will be made in order to guarantee system reliability. Furthermore, the two peaks highlights the fact that the system must be very strained for the system operator to realize that : it's enjoyable to have reserves. But it's even better if the energy price isn't too high. Let's remind that operating reserve demand curves have been proposed as an approach for achieving high energy prices in conditions of scarcity through prices spikes in that are more frequent but less elevated. However, it clearly doesn't work in our case. Therefore, it may be interesting to review the parameters of the operating reserve demand curves. 
+
+\begin{table}[H]
+\centering
+\begin{tabular}{l | c  c  c  c}
+model & mean & variance & min & max \\
+\hline
+EDR & $0.26$ &  $1.91$ & $0$ &  $34.33$ \\
+ImpExp & $0.52$ &  $1.14$ & $0$ &  $13.09$ \\
+ORDC & $ 6.14$ & $154.2$ & $0$ & $718.04$ \\
+\end{tabular}
+\caption{Statistics on the predicted reserve prices}
+\end{table}
+
+\begin{figure}[H]
+    \centering
+    \setlength\fheight{0.3\textwidth}
+    \setlength\fwidth{0.85\textwidth}
+    \input{images/EDR_reserve.tikz}
+    \caption{Predicted reserve prices for the EDR model}
+    \label{fig:EDR_R}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \setlength\fheight{0.3\textwidth}
+    \setlength\fwidth{0.85\textwidth}
+    \input{images/ImpExp_reserve.tikz}
+    \caption{Predicted reserve prices for the ImpExp model}
+    \label{fig:ImpExp_R}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \setlength\fheight{0.3\textwidth}
+    \setlength\fwidth{0.85\textwidth}
+    \input{images/ORDC_reserve.tikz}
+    \caption{Predicted reserve prices for the ORDC model}
+    \label{fig:ORDC_R1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \setlength\fheight{0.3\textwidth}
+    \setlength\fwidth{0.85\textwidth}
+    \input{images/ORDC_reserve2.tikz}
+    \caption{Predicted reserve prices for the ORDC model}
+    \label{fig:ORDC_R2}
+\end{figure}

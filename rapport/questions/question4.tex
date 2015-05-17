@@ -1,0 +1,26 @@
+% QUESTION 4
+
+The percent of generator revenue corresponding to the ancillary service is shown on table [\ref{pourcentage}] and figure [\ref{pourcent}]. We can see that quite logically, the cheapest generators (nuclear and biomass) are used for the production and not for the requirement of reserves. And the most expensive generators (oil) are almost exclusively used for making reserve. It makes sense since the reserves are cost-free, as opposed to the power production. Notice that since the ORDC model ask for more reserves than the two others, even the biomass generators have to participate in the procurement of reserves. Moreover, we can see (figure XXXX) that oil generators made a big leap towards profitability. The way the ORDC model guarantee the reliability of the system makes the oil generator far more valuable than expected.
+ 
+\begin{table}[H]
+\centering
+\begin{tabular}{l | c  c  c}
+type & EDR & ImpExp & ORDC \\
+\hline
+biomass &  $0.26$ & $0.53$ & $5.83$ \\
+nuclear & $0$ & $0$ & $0$ \\
+gas & $2$ & $3.42$ & $38.98$ \\
+oil & $100$ & $100$ & $90.4$ \\
+\end{tabular}
+\caption{Percent of generator revenue corresponding to the ancillary services [\%]}
+\label{pourcentage}
+\end{table} 
+ 
+\begin{figure}[H]
+    \centering
+    \setlength\fheight{4cm}
+    \setlength\fwidth{0.8\textwidth}
+    \input{images/pourcent_reserve.tikz}
+    \caption{Percent of generator revenue corresponding to the ancillary services [\%]}
+    \label{pourcent}
+\end{figure}

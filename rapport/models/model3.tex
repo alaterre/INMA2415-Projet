@@ -1,0 +1,52 @@
+% MODEL 3
+
+One drawback of reserve requirement is that they may result in highly volatile energy prices when the system is strained. High prices indicate scarcity and the need for investment in capacity. They are therefore desirable, because they trigger investment. However, in systems with limited elasticity, energy price spikes result in enormous price volatility, which increases the risk of investment. Operating reserve demand curves have been proposed as an approach for achieving high energy prices in conditions of scarcity through prices spikes in that are more frequent but less elevated. This is achieved by expressing reserve requirement through a demand function, rather than a hard constraint that needs to be satisfied. Our third model implement the economic dispatch with an operating reserve demand curve and we will see if this model correctly fit the Belgium market.
+But first and foremost, let's build the operating reserve demand curve. It's centered around the fixed reserve requirement of previous models and has a width which is equal to $20 \%$ of the national peak demand. The curve is depicted on figure [\ref{fig:ReserveCurve}]. We see that the breakpoint is around $16$, then the slope is about $-1.83$, to finally reach the x-axis at $2700$ MW. The figure [\ref{fig:ReserveUtility}] shows the utility cost of the reserve (integration of the marginal utility).
+
+\begin{minipage}{0.495\textwidth} 
+\begin{figure}[H]
+    \centering
+    \setlength\fheight{3cm}
+    \setlength\fwidth{0.8\textwidth}
+    \input{images/ReserveCurve.tikz}
+    \caption{Marginal utility of reserves}
+    \label{fig:ReserveCurve}
+\end{figure}
+\end{minipage}
+\begin{minipage}{0.495\textwidth} 
+\begin{figure}[H]
+    \centering
+    \setlength\fheight{3cm}
+    \setlength\fwidth{0.8\textwidth}
+    \input{images/ReserveUtility.tikz}
+    \caption{Utility of reserves}
+    \label{fig:ReserveUtility}
+\end{figure}
+\end{minipage}\\
+
+
+Once again, the previous assumptions made still hold, but the hard constraint is replaced in favor of the operating reserve demand curve defined. The optimization model can be described as follows : \\
+
+\begin{center}
+\boxput*(0,1){\colorbox{white}{\textbf{ Operating Reserve Demand Curve [ORDC] }}}{
+\setlength{\fboxsep}{10pt}
+\fbox{\begin{minipage}{0.9\textwidth} \vspace{0.2cm}
+\begin{align*}
+ \max\limits_{r_g, p_g, r_1,r_2,r_3 \geq 0, p_{exch}} \quad  & r_1\: L + (a\: r_2 +2L)\: \frac{r_2}{2} - \sum_{g \in \G} \int_0^{p_g} MC_g(x) dx - 31.2424 \: \frac{p_{exch}^2}{2} - 0.005\: p_{exch} \\
+\end{align*}
+$$
+\begin{array}{llll}
+(\lambda)				& \sum_{g \in \G} p_g + p_{exch} + p^{t}_{r} \geq \D^{t} & & (1) \\
+(\mu)					& r_1 + r_2 + r_3 = \sum_{g \in \G} r_g & & (2) \\
+							& r_g \leq 15\: R^{t}_g & & (3) \\
+							& p_g + r_g \leq P^{t}_g & & (4) \\
+							& -ATC_1^{t} \leq p_{exch} \leq ATC_2^{t} & & (5) \\
+							& r_1 \leq 16 & & (6) \\
+							& r_2 \leq 2700 & & (7) \\
+\end{array}
+$$
+\vspace{0.1cm}
+\end{minipage}}}
+\end{center}
+
+We want to maximize the welfare due to the availability of reserves against the production cost. The parameter $L$ is the value of lost load, which is evaluated to $5000$ \euro /MW. And the variable $R_1$, $r_2$ and $r_3$ are the reserve quantities made in each part of the utility function (linear, quadratic and constant).

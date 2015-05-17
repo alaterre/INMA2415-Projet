@@ -1,0 +1,39 @@
+% MODEL 1
+The first model described in this project is based on simultaneous auction for energy and reserve with fixed procurement of reserves. 
+For this first model, some assumptions are made :
+
+\begin{description}
+\item[Demand] The demand is assumed completely inelastic, with a valuation of $5000$ \euro $/MWH$. The welfare maximization is therefore, equivalent to a cost minimization.
+\item[Reserve] The reserve requirement is fixed at $\R$. Moreover, the reserves are not assumed substituable. Only one type of reserve is considered and needs to be available within the next 15 minutes.
+\item[Imports/Exports] The import/export of energy is assumed fixed and independent from the price of energy. Since the import/export quantities are considered as input data, there are no transmission constraints.
+\item[Producer bids] We assumed that producers submit bids that truthfully represent their cost to the market operator.
+\end{description}
+
+Once those assumptions made, we can describe the economic dispatch optimization problem. \\
+
+\begin{center}
+\boxput*(0,1){\colorbox{white}{\textbf{ Economic Dispatch with Reserve [EDR]}}}{
+\setlength{\fboxsep}{10pt}
+\fbox{\begin{minipage}{10cm} \vspace{0.2cm}
+$$ \min\limits_{r_g, p_g \geq 0} \quad  \sum_{g \in \G} \int_0^{p_g} MC_g(x) dx $$
+$$
+\begin{array}{llll}
+(\lambda)				& \sum_{g \in \G} p_g + f^{t}_{in} - f^{t}_{out} + p^{t}_{r} \geq \D^{t} & & (1) \\
+(\mu)					& \sum_{g \in \G} r_g \geq \R & & (2) \\
+							& r_g \leq 15\: R^{t}_g & & (3) \\
+							& p_g + r_g \leq P^{t}_g & & (4) \\
+\end{array}
+$$
+\vspace{0.1cm}
+\end{minipage}}}
+\end{center} \vspace{0.5cm}
+
+Where $MC_g$ is the marginal cost of a generator $g$ to supply power\footnote{The gas price modulator is included in the computation of the objectif function.}. $p_r$ is the power production coming from renewable energies (wind, solar, hydro). The amount of available reserves depends not only on the maximal capacity (4) of a generator, but also on its ramp constraint (3). Any reserve that needs to be available within the next 15 minutes is limited by 15 times the ramp rate. \newpage
+
+The EDR problem is solve for each hour of the year (the $t$ exponent marks the time-dependency, \: $t \in \left[ 1 \ldots 8760 \right]$). Notice that there are no linking constraints between two consecutive hours. Since the time step is one hour and that generators have generally a ramp rate above $1\%$ of their capacity. Therefore, a generator can almost reach any production rate within the hour.\\
+
+Since the maximum production rate of generators may vary from one hour to another because of possible outages, and that the ramp constraints depend on this maximum production rate, The parameter $R_g$ may change over time, in accord with the production rate. Indeed, it's quite logical that partial generators are not able to react as fast as if they had been in good condition. \\
+
+Even if the goal of this model isn't to meet the demand in every possible occurrence of contingency, while minimizing the cost of the base case, it takes into account the variations of the capacity of the generator under reported failures. \\
+
+Once the market operator solves [EDR], $\lambda$ and $\mu$ are announced as the uniform price for energy and reserve respectively.

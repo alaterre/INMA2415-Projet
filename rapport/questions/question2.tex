@@ -1,0 +1,34 @@
+% QUESTION 2
+
+Figure [\ref{fig:EDR_IMPEXP}] shows the predicted and the realized market prices and the table \ref{tab1} computes some statistics about them. Notice the higher volatility of the market price versus the predicted price. The variance is significantly larger and the gap between the lowest and the highest prices is bigger. How to explain those differences. \\
+
+Our models are quite simple and doesn't take into account many factors. Here is a non-exhaustive list :
+
+\begin{itemize}
+\item[•] The transportation of power over grids is dictated by physical laws rather than decisions.
+\item[•] The economic dispatch problem is not the only problem to take into account. The scheduling of electric energy production is not independent across time periods. Generators are subject to various operating constraints that create dependencies in operations from one hour to the next. The unit commitment problem schedule the on-off status of units, while accounting for time-dependent operating constraints and costs. This explain why the lowest realized price is negative. The system operator preferred selling at loss rather than shut down a generator to restart it later, which would have been costly.
+\item[•] The financial instruments for trading a commodity in a price fixed in advance as callable forward contract or financial transmission rights, are unknown. Since the Belgian market has been strained during winter 2014, it's possible that they take a big part in the Belgian market in order to hedge risk.
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{l | c  c  c  c}
+model & mean & variance & min & max \\
+\hline
+EDR & $37.34$ &  $37.09$ & $24.74$ &  $74.63$ \\
+ImpExp & $37.99$ &  $18.95$ & $28.51$ &  $53.4$ \\
+\hline
+Market & $40.79$ &  $160.79$ & $ -0.01$ &  $200$ \\
+\end{tabular}
+\caption{Statistics on the realized and the predicted energy prices}
+\label{tab1}
+\end{table}
+
+\begin{figure}[H]
+    \centering
+    \setlength\fheight{0.6\textwidth}
+    \setlength\fwidth{0.85\textwidth}
+    \input{images/EDR_IMPEXP_energy.tikz}
+    \caption{The realized and the predicted energy prices for 2014}
+    \label{fig:EDR_IMPEXP}
+\end{figure}

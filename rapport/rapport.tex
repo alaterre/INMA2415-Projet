@@ -1,0 +1,92 @@
+ \documentclass[a4paper,11pt]{article}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{eurosym}
+\usepackage{textcomp}
+%\usepackage{minitoc}
+\usepackage{pdfpages}
+
+\usepackage{pgfplots}
+\usetikzlibrary{external}
+\tikzexternalize[prefix=tikz/] % activate!
+
+% ANALYSE NUMERIQUE - DEVOIR 2
+%% packages - color - newcommand 
+\input{miscellaneous/preambule.tex}
+
+\title{\vspace{-2cm}
+\centering \bf
+\noindent\makebox[\linewidth]{\rule{\linewidth}{0.1cm}}
+LINMA2415 - Quantitative Energy Economics\\
+\textsc{Pricing Scarce Capacity in Belgium}
+\noindent\makebox[\linewidth]{\rule{\linewidth}{0.1cm}}}
+\date{\vspace{-1cm} \today \vspace{-0.5cm}}
+\author{}
+\newcommand{\norme}[1]{\left\Vert #1\right\Vert}
+
+\setcounter{tocdepth}{2}
+\renewcommand*\contentsname{Table of Contents}
+\newcommand{\R}{\mathcal{R}}
+\newcommand{\G}{\mathcal{G}}
+\newcommand{\D}{\mathcal{D}}
+
+\begin{document}
+
+%% page de gare
+%\input{miscellaneous/title2.tex}
+\setcounter{page}{1}
+\maketitle
+%\tableofcontents
+\section{Introduction}
+The primary goal of this work is to investigate the basic energy and reserve dispatch co-optimization. We analyze how the price of energy and reserve vary under a variety of market designs.
+
+\section{Description of the Models}
+\subsection{Model 1}
+\input{models/model1.tex}
+\subsection{Model 2}
+\input{models/model2.tex}
+\subsection{Model 3}
+\input{models/model3.tex}
+
+\newpage
+\section{Questions}
+
+In this section, we will analyze the three previously described models on data coming from the Belgian market (2014). But before answering all the questions about our models, let's take a look at the data. 
+
+\subsection{The Belgian market}
+
+In 2014, a combination of circumstances has led to the closure of a number of power stations. We saw that the country was facing a monumental challenge in terms of security of supply. A few months before winter started, Belgium unexpectedly and very suddenly lost a major portion of its generation capacity (figure [\ref{fig:capa}]). Nuclear reactors Doel 3 and Tihange 2 were shut down because hairline cracks were found in the reactor vessels, and these must be repaired. The Doel 4 reactor also had to be shut down due to a technical incident. The Doel 4 reactor was recommissioned just before Christmas. However, 20\% of Belgian generation capacity still remained offline\footnote{source : http://www.elia.be/en/about-elia/questions-about-the-risk-of-shortage-in-Belgium}. The figure [\ref{fig:ratio}] shows the ratio between the Belgian production capacity over the real demand level (demand level minus the power production coming from renewable energies). We see that the curve goes down in winter and even below one, meaning that the Belgian production wasn't able to satisfy its own demand level. Therefore, Belgium was structurally dependent on imports throughout the winter, which could lead to higher energy prices. It will be interesting to observe how the different models behave in those circumstances.
+
+\begin{figure}[H]
+    \centering
+    \setlength\fheight{4cm}
+    \setlength\fwidth{0.8\textwidth}
+    \input{images/capaBelgium.tikz}
+    \caption{Maximal production rate of Belgian generators}
+    \label{fig:capa}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \setlength\fheight{4cm}
+    \setlength\fwidth{0.8\textwidth}
+    \input{images/ratio.tikz}
+    \caption{Ratio between the maximal Belgian production and the real demand level (the demand level minus the power coming from renewable energies)}
+    \label{fig:ratio}
+\end{figure}
+
+\newpage
+\subsection{Question 1}
+\input{questions/question1.tex}
+\subsection{Question 2}
+\input{questions/question2.tex}
+\subsection{Question 3}
+\input{questions/question3.tex}
+\subsection{Question 4}
+\input{questions/question4.tex}
+\subsection{Question 5}
+\input{questions/question5.tex}
+
+
+\end{document}

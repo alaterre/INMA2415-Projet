@@ -1,0 +1,80 @@
+% This file was created by matlab2tikz.
+% Minimal pgfplots version: 1.3
+%
+%The latest updates can be retrieved from
+%  http://www.mathworks.com/matlabcentral/fileexchange/22022-matlab2tikz
+%where you can also make suggestions and rate matlab2tikz.
+%
+\definecolor{mycolor1}{rgb}{0.84706,0.16078,0.00000}%
+\definecolor{mycolor2}{rgb}{0.04314,0.51765,0.78039}%
+\definecolor{mycolor3}{rgb}{0.87059,0.49020,0.00000}%
+%
+\begin{tikzpicture}
+
+\begin{axis}[%
+width=\fwidth,
+height=\fheight,
+at={(\fwidth,\fheight)},
+scale only axis,
+area legend,
+separate axis lines,
+every outer x axis line/.append style={black},
+every x tick label/.append style={font=\color{black}},
+xmin=0,
+xmax=8,
+xlabel={Nuclear generator},
+xtick={1, 2, 3, 4, 5, 6, 7},
+every outer y axis line/.append style={black},
+every y tick label/.append style={font=\color{black}},
+ymin=0,
+ymax=1000,
+title={Profit margin [\euro / MW-day]},
+ymajorgrids,
+legend style={at={(0.5,0.97)},anchor=north,legend columns=4,legend cell align=left,align=left,draw=white,fill=white}
+]
+\addplot[ybar,bar width=0.02\fwidth,bar shift=-0.02\fwidth,draw=black,fill=mycolor1] plot table[row sep=crcr] {%
+1	391.841753\\
+2	625.488172\\
+3	199.950964\\
+4	662.371119\\
+5	684.183826\\
+6	194.318354\\
+7	693.458351\\
+};
+\addlegendentry{ EDR};
+
+\addplot [color=black,solid,forget plot]
+  table[row sep=crcr]{%
+0	0\\
+8	0\\
+};
+\addplot[ybar,bar width=0.02\fwidth,draw=black,fill=mycolor2] plot table[row sep=crcr] {%
+1	393.435515\\
+2	635.629893\\
+3	181.945509\\
+4	681.775726\\
+5	696.216683\\
+6	176.455306\\
+7	708.18522\\
+};
+\addlegendentry{ ImpExp};
+
+\addplot[ybar,bar width=0.02\fwidth,bar shift=0.02\fwidth,draw=black,fill=mycolor3] plot table[row sep=crcr] {%
+1	408.735275\\
+2	666.686268\\
+3	183.37229\\
+4	736.209532\\
+5	749.013116\\
+6	177.860866\\
+7	762.168769\\
+};
+\addlegendentry{ ORDC};
+
+\addplot [color=black,dotted,line width=2.0pt]
+  table[row sep=crcr]{%
+0	762.2\\
+8	762.2\\
+};
+
+\end{axis}
+\end{tikzpicture}%

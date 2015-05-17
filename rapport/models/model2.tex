@@ -1,0 +1,62 @@
+% MODEL 2
+
+Throughout this second model, we will analyze the influence of neighboring markets on generator profitability. The first task is to represent the neighboring markets with a supply function just like any other generators. The figures [\ref{fig:France}] [\ref{fig:Netherlands}] show the pairs quantity exchange between Belgium and France/Netherlands, at a given market price. The marginal cost of Netherlands behave as expected, i.e. the change in the total cost that arises when the quantity produced has an increment by unit, becomes more and more important. On the contrary, the marginal cost of the 'french' generator decreases when more power is sent to Belgium. This leads to a non-intuitive behavior. Indeed, more the generator produces, less the next unit of power will be expensive. Unfortunately, if both generators are represented with those marginal cost functions, our problem will become non-convex. An other approach which makes sense, is to combined the two import supply functions into one. Meaning that the importations are considered as coming from a unique external generator. The result is shown on figure [\ref{France_Netherlands}]. The supply function is approximated with a linear regression : $\text{MC}(p)= 31.2424 p + 0.005$. Notice that supply function seems quite responsive to the market price. For a small difference in the Belgian price, the importation drastically vary. \\
+
+\vspace{0.5cm}
+
+\begin{minipage}{0.495\textwidth} 
+\begin{figure}[H]
+    \centering
+    \newlength\fheight 
+    \newlength\fwidth 
+    \setlength\fheight{4cm}
+    \setlength\fwidth{0.75\textwidth}
+    \input{images/FRANCE.tikz}
+    \caption{Exchange/Price bewteen FR and BE}
+    \label{fig:France}
+\end{figure}
+\end{minipage}
+\begin{minipage}{0.495\textwidth} 
+\begin{figure}[H]
+    \centering
+    \setlength\fheight{4cm}
+    \setlength\fwidth{0.75\textwidth}
+    \input{images/NETHERLANDS.tikz}
+    \caption{Exchange/Price bewteen NL and BE}
+    \label{fig:Netherlands}
+\end{figure}
+\end{minipage} \\
+\begin{figure}[H]
+    \centering
+    \setlength\fheight{4cm}
+    \setlength\fwidth{0.8\textwidth}
+    \input{images/FRANCE_NETHERLANDS.tikz}
+    \caption{Exchange/Price bewteen [FR+NL] and BE}
+    \label{France_Netherlands}
+\end{figure}
+
+The previous assumptions made for the aforementioned model still hold. However, this time, the quantity exchange between Belgium and neighboring markets is considered as a variable and as a function of the supply function previously defined. Moreover, even if the neighboring market is represented as a generator, it's not allowed to participate in the auction for reserve. The optimization model can be described as follows : \\
+
+\begin{center}
+\boxput*(0,1){\colorbox{white}{\textbf{ Import/Export Economic Dispatch [ImpExp] }}}{
+\setlength{\fboxsep}{10pt}
+\fbox{\begin{minipage}{0.7\textwidth} \vspace{0.2cm}
+$$ \min\limits_{r_g, p_g \geq 0, p_{exch}} \quad  \sum_{g \in \G} \int_0^{p_g} MC_g(x) dx + 31.2424 \: \frac{p_{exch}^2}{2} + 0.005\: p_{exch}$$
+$$
+\begin{array}{llll}
+(\lambda)				& \sum_{g \in \G} p_g + p_{exch} + p^{t}_{r} \geq \D^{t} & & (1) \\
+(\mu)					& \sum_{g \in \G} r_g \geq \R & & (2) \\
+							& r_g \leq 15\: R^{t}_g & & (3) \\
+							& p_g + r_g \leq P^{t}_g & & (4) \\
+							& -ATC_1^{t} \leq p_{exch} \leq ATC_2^{t} & & (5) \\
+\end{array}
+$$
+\vspace{0.1cm}
+\end{minipage}}}
+\end{center}
+
+where the ATC values are :
+\begin{align*}
+ATC_1^{t} &= NTC\_BE2FR^{t} + NTC\_BE2NL^{t} \\
+ATC_2^{t} &= NTC\_FR2BE^{t} + NTC\_NL2BE^{t} 
+\end{align*}

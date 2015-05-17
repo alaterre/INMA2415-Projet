@@ -1,0 +1,66 @@
+% This file was created by matlab2tikz.
+% Minimal pgfplots version: 1.3
+%
+%The latest updates can be retrieved from
+%  http://www.mathworks.com/matlabcentral/fileexchange/22022-matlab2tikz
+%where you can also make suggestions and rate matlab2tikz.
+%
+\definecolor{mycolor1}{rgb}{0.84706,0.16078,0.00000}%
+\definecolor{mycolor2}{rgb}{0.04314,0.51765,0.78039}%
+\definecolor{mycolor3}{rgb}{0.87059,0.49020,0.00000}%
+%
+\begin{tikzpicture}
+
+\begin{axis}[%
+width=\fwidth,
+height=\fheight,
+at={(\fwidth,\fheight)},
+scale only axis,
+area legend,
+separate axis lines,
+every outer x axis line/.append style={black},
+every x tick label/.append style={font=\color{black}},
+xmin=0,
+xmax=5,
+xtick={0,1,2,3,4,5},
+xticklabels={{},{Bio.},{Nucl.},{Gas},{Oil},{}},
+xlabel={Generator type},
+every outer y axis line/.append style={black},
+every y tick label/.append style={font=\color{black}},
+ymin=0,
+ymax=650,
+title={Average profit margin [\euro / MW-day]},
+ymajorgrids,
+legend style={at={(0.5,0.97)},anchor=north,legend columns=3,legend cell align=left,align=left,draw=white,fill=white}
+]
+\addplot[ybar,bar width=0.029662\fwidth,bar shift=-0.037077\fwidth,draw=black,fill=mycolor1] plot table[row sep=crcr] {%
+1	278.961397333333\\
+2	493.087505571429\\
+3	32.8435676976744\\
+4	0.932849\\
+};
+\addlegendentry{ EDR};
+
+\addplot [color=black,solid,forget plot]
+  table[row sep=crcr]{%
+0	0\\
+5	0\\
+};
+\addplot[ybar,bar width=0.029662\fwidth,draw=black,fill=mycolor2] plot table[row sep=crcr] {%
+1	286.350823666667\\
+2	496.234836\\
+3	40.6853934186047\\
+4	1.88090233333333\\
+};
+\addlegendentry{ ImpExp};
+
+\addplot[ybar,bar width=0.029662\fwidth,bar shift=0.037077\fwidth,draw=black,fill=mycolor3] plot table[row sep=crcr] {%
+1	337.644301222222\\
+2	526.292302285714\\
+3	109.894391953488\\
+4	24.6066003333333\\
+};
+\addlegendentry{ ORDC};
+
+\end{axis}
+\end{tikzpicture}%

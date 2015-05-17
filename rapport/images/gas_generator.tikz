@@ -1,0 +1,187 @@
+% This file was created by matlab2tikz.
+% Minimal pgfplots version: 1.3
+%
+%The latest updates can be retrieved from
+%  http://www.mathworks.com/matlabcentral/fileexchange/22022-matlab2tikz
+%where you can also make suggestions and rate matlab2tikz.
+%
+\definecolor{mycolor1}{rgb}{0.84706,0.16078,0.00000}%
+\definecolor{mycolor2}{rgb}{0.04314,0.51765,0.78039}%
+\definecolor{mycolor3}{rgb}{0.87059,0.49020,0.00000}%
+%
+\begin{tikzpicture}
+
+\begin{axis}[%
+width=\fwidth,
+height=\fheight,
+at={(\fwidth,\fheight)},
+scale only axis,
+area legend,
+separate axis lines,
+every outer x axis line/.append style={black},
+every x tick label/.append style={font=\color{black}},
+xmin=0,
+xmax=44,
+xlabel={Gas generator},
+every outer y axis line/.append style={black},
+every y tick label/.append style={font=\color{black}},
+ymin=0,
+ymax=520,
+title={Profit margin [\euro / MW-day]},
+ymajorgrids,
+legend style={at={(0.5,0.97)},anchor=north,legend columns=4,legend cell align=left,align=left,draw=white,fill=white}
+]
+\addplot[ybar,bar width=0.007\fwidth,bar shift=-0.007\fwidth,draw=black,fill=mycolor1] plot table[row sep=crcr] {%
+1	446.137971\\
+2	119.121063\\
+3	121.601622\\
+4	118.063942\\
+5	94.394361\\
+6	54.435866\\
+7	63.681298\\
+8	70.719834\\
+9	68.925917\\
+10	33.929164\\
+11	20.890385\\
+12	20.890385\\
+13	14.703568\\
+14	16.87723\\
+15	16.717246\\
+16	16.717246\\
+17	7.133388\\
+18	9.343958\\
+19	5.982131\\
+20	6.132066\\
+21	4.521989\\
+22	5.86518\\
+23	5.026359\\
+24	4.855727\\
+25	3.288458\\
+26	5.476274\\
+27	3.697205\\
+28	3.620683\\
+29	3.503884\\
+30	2.42636\\
+31	2.044421\\
+32	3.044049\\
+33	5.078886\\
+34	4.766866\\
+35	4.766866\\
+36	4.766866\\
+37	4.74255\\
+38	1.162388\\
+39	1.012686\\
+40	1.923808\\
+41	4.676752\\
+42	0.942268\\
+43	4.664245\\
+};
+\addlegendentry{ EDR};
+
+\addplot [color=black,solid,forget plot]
+  table[row sep=crcr]{%
+0	0\\
+44	0\\
+};
+\addplot[ybar,bar width=0.007\fwidth,draw=black,fill=mycolor2] plot table[row sep=crcr] {%
+1	458.38911\\
+2	134.362042\\
+3	140.619298\\
+4	135.147026\\
+5	111.628856\\
+6	70.629623\\
+7	81.120977\\
+8	90.368348\\
+9	88.540415\\
+10	48.420255\\
+11	35.482169\\
+12	35.482169\\
+13	26.236998\\
+14	29.870809\\
+15	29.632263\\
+16	29.632266\\
+17	12.442325\\
+18	17.711461\\
+19	11.147036\\
+20	11.544586\\
+21	11.024107\\
+22	9.992967\\
+23	8.975957\\
+24	8.29519\\
+25	4.490975\\
+26	10.280113\\
+27	5.049382\\
+28	4.873917\\
+29	4.622847\\
+30	2.165265\\
+31	2.053126\\
+32	3.93939\\
+33	9.462649\\
+34	9.406491\\
+35	9.406491\\
+36	9.406492\\
+37	9.40497\\
+38	1.880904\\
+39	1.880904\\
+40	3.761807\\
+41	9.404519\\
+42	1.880903\\
+43	9.404519\\
+};
+\addlegendentry{ ImpExp};
+
+\addplot[ybar,bar width=0.007\fwidth,bar shift=0.007\fwidth,draw=black,fill=mycolor3] plot table[row sep=crcr] {%
+1	509.031622\\
+2	180.263545\\
+3	196.525709\\
+4	199.771903\\
+5	173.423449\\
+6	130.915863\\
+7	157.82485\\
+8	148.145281\\
+9	146.553509\\
+10	126.084697\\
+11	106.28886\\
+12	123.884776\\
+13	102.467043\\
+14	101.699373\\
+15	101.500337\\
+16	101.500409\\
+17	68.059127\\
+18	90.974734\\
+19	91.417278\\
+20	92.323003\\
+21	84.675595\\
+22	82.150777\\
+23	77.675397\\
+24	77.065699\\
+25	50.51984\\
+26	120.344399\\
+27	68.36467\\
+28	67.527385\\
+29	66.255322\\
+30	43.68047\\
+31	39.731264\\
+32	61.232983\\
+33	116.482618\\
+34	113.584585\\
+35	113.584585\\
+36	113.584605\\
+37	113.39449\\
+38	31.550451\\
+39	30.131534\\
+40	50.733724\\
+41	112.7646\\
+42	29.230676\\
+43	112.537817\\
+};
+\addlegendentry{ ORDC};
+
+\addplot [color=black,dotted,line width=2.0pt]
+  table[row sep=crcr]{%
+0	122.4\\
+44	122.4\\
+};
+
+\end{axis}
+\end{tikzpicture}%

@@ -1,0 +1,34 @@
+% QUESTION 3
+
+\begin{table}[H]
+\centering
+\begin{tabular}{l | c  c  c  c}
+model & mean & variance & min & max \\
+\hline
+EDR & $37.34$ &  $37.09$ & $24.74$ &  $74.63$ \\
+ImpExp & $37.99$ &  $18.95$ & $28.51$ &  $53.4$ \\
+ORDC & $40.299$ & $163.29$ & $28.52$ & $754.63$ \\
+ORDC2 & $39.95$ & $31.05$ & $28.52$ & $70$ \\
+\hline
+Market & $40.79$ &  $160.79$ & $ -0.01$ &  $200$ \\
+\end{tabular}
+\caption{Statistics on the realized and the predicted energy prices}
+\end{table}
+
+\begin{figure}[H]
+    \centering
+    \setlength\fheight{4cm}
+    \setlength\fwidth{0.8\textwidth}
+    \input{images/ORDC_price.tikz}
+    \caption{TRUC}
+    \label{fig:capa}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \setlength\fheight{4cm}
+    \setlength\fwidth{0.8\textwidth}
+    \input{images/ORDC_price_zoom.tikz}
+    \caption{TRUC}
+    \label{fig:ratio}
+\end{figure}
